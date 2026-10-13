@@ -1,0 +1,642 @@
+﻿
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>КрымКлимат — кондиционеры в Крыму</title>
+    <meta name="description" content="Монтаж, обслуживание и ремонт кондиционеров по всему Крыму.">
+
+    <style>
+        :root {
+            --blue: #0784c9;
+            --dark: #172b3a;
+            --text: #607484;
+            --bg: #f3f8fb;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+            body.lock {
+                overflow: hidden;
+            }
+
+        .container {
+            width: min(1080px, 90%);
+            margin: auto;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 5;
+            background: white;
+            border-bottom: 1px solid #e8eef2;
+        }
+
+        .navbar {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--blue);
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+            nav a {
+                color: var(--text);
+                text-decoration: none;
+                font-size: 14px;
+            }
+
+                nav a:hover {
+                    color: var(--blue);
+                }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 22px;
+            border: 0;
+            border-radius: 9px;
+            background: var(--blue);
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+            .btn:hover {
+                background: #056ba3;
+                transform: translateY(-1px);
+            }
+
+        .hero {
+            padding: 100px 0;
+            background: radial-gradient(ellipse at 85% 20%, #bdeaff, transparent 35%), linear-gradient(120deg, #e8f6ff, white);
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 6px 12px;
+            margin-bottom: 18px;
+            border-radius: 30px;
+            background: #d9f0ff;
+            color: #0876b1;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .hero h1 {
+            max-width: 720px;
+            font-size: clamp(36px, 5vw, 58px);
+            line-height: 1.12;
+        }
+
+            .hero h1 span {
+                color: var(--blue);
+            }
+
+        .hero p {
+            max-width: 570px;
+            margin: 20px 0 28px;
+            color: var(--text);
+            font-size: 18px;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn.light {
+            background: white;
+            color: var(--blue);
+            border: 1px solid #cfe7f5;
+        }
+
+        section {
+            padding: 75px 0;
+        }
+
+        .heading {
+            max-width: 650px;
+            margin-bottom: 32px;
+        }
+
+            .heading h2, .about h2, .contacts h2 {
+                margin-bottom: 12px;
+                font-size: clamp(28px, 4vw, 38px);
+            }
+
+            .heading p, .about p, .contacts p {
+                color: var(--text);
+            }
+
+        .services {
+            background: var(--bg);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            padding: 26px;
+            border: 1px solid #e6edf2;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 5px 20px #172b3a08;
+            transition: .2s;
+        }
+
+            .card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 12px 30px #172b3a12;
+            }
+
+        .icon {
+            display: grid;
+            width: 46px;
+            height: 46px;
+            place-items: center;
+            margin-bottom: 16px;
+            border-radius: 12px;
+            background: #e3f4ff;
+            font-size: 23px;
+        }
+
+        .card h3 {
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            min-height: 45px;
+            color: var(--text);
+            font-size: 14px;
+        }
+
+        .card-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            padding-top: 17px;
+            border-top: 1px solid #edf1f4;
+        }
+
+        .price {
+            font-size: 19px;
+            font-weight: bold;
+        }
+
+            .price small {
+                display: block;
+                font-size: 11px;
+                color: var(--text);
+                font-weight: normal;
+            }
+
+        .order {
+            padding: 9px 12px;
+            border: 0;
+            border-radius: 7px;
+            background: #e8f5fc;
+            color: #056ba3;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .note {
+            margin-top: 20px;
+            color: var(--text);
+            font-size: 12px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 45px;
+            align-items: center;
+        }
+
+        .about-box {
+            padding: 28px;
+            border-radius: 15px;
+            background: #eaf7ff;
+        }
+
+            .about-box h3 {
+                margin-bottom: 15px;
+            }
+
+        .benefit {
+            display: flex;
+            gap: 12px;
+            margin-top: 14px;
+        }
+
+        .check {
+            flex-shrink: 0;
+            width: 26px;
+            height: 26px;
+            text-align: center;
+            border-radius: 50%;
+            background: #cceeff;
+            color: #0876b1;
+            font-weight: bold;
+        }
+
+        .benefit p {
+            font-size: 14px;
+        }
+
+        .contacts {
+            background: #eaf7ff;
+            text-align: center;
+        }
+
+            .contacts p {
+                margin: 0 auto 24px;
+                max-width: 550px;
+            }
+
+        footer {
+            padding: 25px 0;
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        /* Всплывающее окно */
+        .modal {
+            position: fixed;
+            inset: 0;
+            z-index: 20;
+            padding: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #0d1e2bcc;
+            backdrop-filter: blur(5px);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: .25s;
+        }
+
+            .modal.active {
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+            }
+
+        .modal-box {
+            position: relative;
+            width: 100%;
+            max-width: 460px;
+            max-height: 92vh;
+            overflow-y: auto;
+            padding: 30px;
+            border-radius: 18px;
+            background: white;
+            box-shadow: 0 25px 80px #0003;
+            transform: translateY(12px);
+            transition: .25s;
+        }
+
+        .modal.active .modal-box {
+            transform: translateY(0);
+        }
+
+        .close {
+            position: absolute;
+            top: 12px;
+            right: 14px;
+            width: 36px;
+            height: 36px;
+            border: 0;
+            border-radius: 9px;
+            background: #edf3f6;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        .modal-box h2 {
+            padding-right: 25px;
+            font-size: 26px;
+            line-height: 1.25;
+        }
+
+        .desc {
+            margin: 8px 0 20px;
+            color: var(--text);
+            font-size: 14px;
+        }
+
+        form label {
+            display: block;
+            margin: 14px 0 6px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        form input, form select {
+            display: block;
+            width: 100%;
+            min-height: 45px;
+            padding: 10px 12px;
+            border: 1px solid #d7e2e9;
+            border-radius: 8px;
+            background: white;
+            color: var(--dark);
+            font-size: 15px;
+        }
+
+            form input:focus, form select:focus {
+                outline: 2px solid #0784c933;
+                border-color: var(--blue);
+            }
+
+        form .btn {
+            width: 100%;
+            margin-top: 22px;
+        }
+
+        #form-message {
+            margin-top: 14px;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        @media (max-width: 650px) {
+            .navbar {
+                flex-direction: column;
+                justify-content: center;
+                padding: 14px 0;
+                gap: 10px;
+            }
+
+            nav {
+                gap: 17px;
+            }
+
+            .hero {
+                padding: 65px 0;
+            }
+
+            section {
+                padding: 55px 0;
+            }
+
+            .grid, .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-grid {
+                gap: 25px;
+            }
+
+            .card {
+                padding: 22px;
+            }
+
+            .modal-box {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container navbar">
+            <div class="logo">КрымКлимат</div>
+            <nav>
+                <a href="#services">Услуги</a>
+                <a href="#about">О нас</a>
+                <a href="#contacts">Контакты</a>
+            </nav>
+            <a class="btn" href="tel:+79781654462">
+                📞 +7 (978) 165-44-62
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <span class="tag">Монтаж и обслуживание по всему Крыму</span>
+                <h1>Комфортная температура <span>круглый год</span></h1>
+                <p>Установка, чистка и ремонт кондиционеров для дома и бизнеса. Обсудим задачу и согласуем стоимость до начала работ.</p>
+                <div class="actions">
+                    <button class="btn open-modal">Оставить заявку</button>
+                    <a class="btn light" href="#services">Наши услуги</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="services" id="services">
+            <div class="container">
+                <div class="heading">
+                    <h2>Наши услуги</h2>
+                    <p>Поможем с установкой, обслуживанием и ремонтом кондиционеров.</p>
+                </div>
+                <div class="grid">
+                    <article class="card">
+                        <div class="icon">❄️</div>
+                        <h3>Монтаж кондиционера</h3>
+                        <p>Установка оборудования и согласование места монтажа.</p>
+                        <div class="card-bottom">
+                            <div class="price">От 4000 ₽<small>Предварительная цена</small></div>
+                            <button class="order" data-service="Монтаж кондиционера">Выбрать</button>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="icon">🧰</div>
+                        <h3>Чистка и обслуживание</h3>
+                        <p>Профилактическая очистка и обслуживание системы.</p>
+                        <div class="card-bottom">
+                            <div class="price">От 1500 ₽<small>Предварительная цена</small></div>
+                            <button class="order" data-service="Чистка и обслуживание">Выбрать</button>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="icon">🔧</div>
+                        <h3>Диагностика и ремонт</h3>
+                        <p>Поиск неисправностей и обсуждение вариантов ремонта.</p>
+                        <div class="card-bottom">
+                            <div class="price">От 1000 ₽<small>Предварительная цена</small></div>
+                            <button class="order" data-service="Ремонт">Выбрать</button>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="icon">🏠</div>
+                        <h3>Демонтаж и перенос</h3>
+                        <p>Демонтаж установленного оборудования и его перенос.</p>
+                        <div class="card-bottom">
+                            <div class="price">От 2000 ₽<small>Предварительная цена</small></div>
+                            <button class="order" data-service="Демонтаж">Выбрать</button>
+                        </div>
+                    </article>
+                </div>
+                <p class="note">Цены ориентировочные. Итоговая стоимость зависит от объёма и сложности работ.</p>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container about-grid">
+                <div>
+                    <h2>Климатический комфорт без лишних сложностей</h2>
+                    <p>Работаем с задачами по установке и обслуживанию кондиционеров в разных городах Крыма. Подробности и стоимость обсуждаем заранее.</p>
+                </div>
+                <div class="about-box">
+                    <h3>Почему стоит обратиться к нам</h3>
+                    <div class="benefit"><span class="check">✓</span><p>Согласование стоимости до начала работ.</p></div>
+                    <div class="benefit"><span class="check">✓</span><p>Подбор услуги под вашу задачу.</p></div>
+                    <div class="benefit"><span class="check">✓</span><p>Работа по всему Крыму — возможность выезда уточняется при обращении.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contacts" id="contacts">
+            <div class="container">
+                <h2>Свяжитесь с нами</h2>
+
+                <p>
+                    Работаем по всему Крыму.
+                    Позвоните, чтобы обсудить монтаж или ремонт кондиционера.
+                </p>
+
+                <a class="btn" href="tel:+79781654462">
+                    📞 Позвонить мастеру
+                </a>
+
+                <p style="margin-top:20px;">
+                    Телефон:
+                    <br>
+                    <strong>+7 (978) 165-44-62</strong>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">© <span id="year"></span> КрымКлимат. Все права защищены.</div>
+    </footer>
+
+    <div class="modal" id="request-modal" aria-hidden="true">
+        <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <button class="close" id="close-modal" aria-label="Закрыть окно">&times;</button>
+            <h2 id="modal-title">Оставить заявку</h2>
+            <p class="desc">Заполните данные, чтобы обсудить вашу задачу.</p>
+
+            <form id="request-form">
+                <label for="name">Ваше имя</label>
+                <input id="name" name="name" type="text" placeholder="Как к вам обращаться" autocomplete="name" required>
+
+                <label for="phone">Номер телефона</label>
+                <input id="phone" name="phone" type="tel" placeholder="+7 999 123-45-67" autocomplete="tel" required>
+
+                <label for="city">Город в Крыму</label>
+                <input id="city" name="city" type="text" placeholder="Например, Симферополь" required>
+
+                <label for="service">Какая услуга нужна?</label>
+                <select id="service" name="service" required>
+                    <option value="">Выберите услугу</option>
+                    <option>Монтаж кондиционера</option>
+                    <option>Чистка и обслуживание</option>
+                    <option>Ремонт</option>
+                    <option>Демонтаж</option>
+                </select>
+
+                <button class="btn" type="submit">Отправить заявку</button>
+                <p id="form-message" role="status" aria-live="polite"></p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById("request-modal");
+        const form = document.getElementById("request-form");
+        const message = document.getElementById("form-message");
+        const serviceSelect = document.getElementById("service");
+        const nameInput = document.getElementById("name");
+
+        document.getElementById("year").textContent = new Date().getFullYear();
+
+        function openModal(service = "") {
+        modal.classList.add("active");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("lock");
+        message.textContent = "";
+
+        if (service) serviceSelect.value = service;
+
+        setTimeout(() => nameInput.focus(), 100);
+        }
+
+        function closeModal() {
+        modal.classList.remove("active");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("lock");
+        }
+
+        document.querySelectorAll(".open-modal").forEach(button => {
+        button.addEventListener("click", () => openModal());
+        });
+
+        document.querySelectorAll(".order").forEach(button => {
+        button.addEventListener("click", () => openModal(button.dataset.service));
+        });
+
+        document.getElementById("close-modal").addEventListener("click", closeModal);
+
+        modal.addEventListener("click", event => {
+        if (event.target === modal) closeModal();
+        });
+
+        document.addEventListener("keydown", event => {
+        if (event.key === "Escape" && modal.classList.contains("active")) {
+        closeModal();
+        }
+        });
+
+        form.addEventListener("submit", event => {
+        event.preventDefault();
+
+        message.textContent = "Форма работает в демонстрационном режиме. Отправка заявок на сервер ещё не подключена.";
+        });
+    </script>
+</body>
+</html>
