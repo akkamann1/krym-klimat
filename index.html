@@ -632,11 +632,56 @@
         }
         });
 
-        form.addEventListener("submit", event => {
-        event.preventDefault();
+        
+form.addEventListener("submit", async event => {
+    event.preventDefault();
 
-        message.textContent = "Форма работает в демонстрационном режиме. Отправка заявок на сервер ещё не подключена.";
-        });
+    const submitButton = form.querySelector('button[type="submit"]');
+    const originalText = submitButton.textContent;
+
+    submitButton.disabled = true;
+    submitButton.textContent = "Отправляем...";
+    message.textContent = "";
+
+    const data = {
+        name: form.elements.name.value.trim(),
+        phone: form.elements.phone.value.trim(),
+        city: form.elements.city.value.trim(),
+        service: form.elements.service.value
+    };
+
+    try {
+        const response = await fetch(
+            "https://krym-klimat-orders.maksudova989.workers.dev/",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            }
+        );
+
+        const result = await response.json();
+
+        if (!response.ok || !result.ok) {
+            throw new Error(result.error || "Не удалось отправить заявку");
+        }
+
+        message.textContent = "Заявка отправлена! Скоро с вами свяжутся.";
+        form.reset();
+
+    } catch (error) {
+        message.textContent =
+            "Не удалось отправить заявку. Попробуйте позвонить нам.";
+        console.error("Ошибка отправки заявки:", error);
+
+    } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = originalText;
+    }
+});
+
     </script>
 </body>
 </html>
